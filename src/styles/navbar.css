@@ -1,0 +1,15 @@
+nav {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #292929;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
