@@ -7,9 +7,7 @@ export function Navbar() {
         style={({ isActive }) =>
           isActive
             ? {
-                background: "-webkit-linear-gradient(30deg, #fff2a0, #ff9aac)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                color: "#9bebff",
               }
             : { color: "#fff" }
         }
@@ -21,9 +19,7 @@ export function Navbar() {
         style={({ isActive }) =>
           isActive
             ? {
-                background: "-webkit-linear-gradient(30deg, #fff2a0, #ff9aac)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                color: "#9bebff",
               }
             : { color: "#fff" }
         }
@@ -35,9 +31,7 @@ export function Navbar() {
         style={({ isActive }) =>
           isActive
             ? {
-                background: "-webkit-linear-gradient(30deg, #fff2a0, #ff9aac)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                color: "#9bebff",
               }
             : { color: "#fff" }
         }
