@@ -22,13 +22,16 @@ export function Navbar({ isAuth, setIsAuth }: NavbarProps) {
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/createpost">Create Post</NavLink>
+
       {!isAuth ? (
         <NavLink to="/login">Login</NavLink>
       ) : (
-        <button className="logout__button" onClick={signUserOut}>
-          Log Out
-        </button>
+        <>
+          <NavLink to="/createpost">Create Post</NavLink>
+          <button className="logout__button" onClick={signUserOut}>
+            Log Out
+          </button>
+        </>
       )}
     </nav>
   );
