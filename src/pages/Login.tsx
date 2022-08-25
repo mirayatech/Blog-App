@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
 
 type LoginProps = {
-  setIsAuth: any;
+  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export function Login({ setIsAuth }: LoginProps) {
   let navigate = useNavigate();
 
   const signInWithGoogle = () => {
-    signInWithPopup(auth, provider).then((result) => {
+    signInWithPopup(auth, provider).then(() => {
       localStorage.setItem("isAuth", true);
       setIsAuth(true);
 
