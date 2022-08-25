@@ -1,44 +1,19 @@
 import { NavLink } from "react-router-dom";
 import "../styles/navbar.css";
-export function Navbar() {
+type NavbarProps = {
+  isAuth: boolean;
+};
+
+export function Navbar({ isAuth }: NavbarProps) {
   return (
     <nav>
-      <NavLink
-        style={({ isActive }) =>
-          isActive
-            ? {
-                color: "#9bebff",
-              }
-            : { color: "#fff" }
-        }
-        to="/"
-      >
-        Home
-      </NavLink>
-      <NavLink
-        style={({ isActive }) =>
-          isActive
-            ? {
-                color: "#9bebff",
-              }
-            : { color: "#fff" }
-        }
-        to="/createpost"
-      >
-        Create Post
-      </NavLink>
-      <NavLink
-        style={({ isActive }) =>
-          isActive
-            ? {
-                color: "#9bebff",
-              }
-            : { color: "#fff" }
-        }
-        to="/login"
-      >
-        Login
-      </NavLink>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/createpost">Create Post</NavLink>
+      {!isAuth ? (
+        <NavLink to="/login">Login</NavLink>
+      ) : (
+        <button>Log Out</button>
+      )}
     </nav>
   );
 }

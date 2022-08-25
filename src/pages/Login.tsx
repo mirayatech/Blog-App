@@ -1,3 +1,31 @@
-export function Login() {
-  return <div>Login</div>;
+import { FcGoogle } from "react-icons/fc";
+import { auth, provider } from "../firebase-config";
+import { signInWithPopup } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+
+type LoginProps = {
+  setIsAuth: any;
+};
+
+export function Login({ setIsAuth }: LoginProps) {
+  let navigate = useNavigate();
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
+
+      navigate("/");
+    });
+  };
+
+  return (
+    <div className="login-page">
+      <p>Sign in with Google to continue </p>
+      <button className="login__button" onClick={signInWithGoogle}>
+        <FcGoogle />
+        Sign in with Google
+      </button>
+    </div>
+  );
 }
