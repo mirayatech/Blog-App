@@ -2,9 +2,13 @@ import { useState, useEffect } from "react";
 import { IoMdTrash } from "react-icons/io";
 
 import { getDocs, collection, doc, deleteDoc } from "firebase/firestore";
-import { db } from "../firebase-config";
+import { auth, db } from "../firebase-config";
 
-export function Home() {
+type HomeProps = {
+  isAuth: boolean;
+};
+
+export function Home({ isAuth }: HomeProps) {
   const [postLists, setPostLists] = useState<
     {
       author: { id: string; name: string };
@@ -39,14 +43,16 @@ export function Home() {
             <p>{post.postText}</p>
             <span>Author: {post.author.name}</span>
             <div>
-              <button
-                className="delete__post"
-                onClick={() => {
-                  deletePost(post.id);
-                }}
-              >
-                <IoMdTrash />
-              </button>
+              {isAuth && post.author.id === auth.currentUser.uid && (
+                <button
+                  className="delete__post"
+                  onClick={() => {
+                    deletePost(post.id);
+                  }}
+                >
+                  <IoMdTrash />
+                </button>
+              )}
             </div>
           </div>
         );
