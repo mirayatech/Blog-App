@@ -22,8 +22,6 @@ export function Home({ isAuth }: HomeProps) {
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(postCollectionRefrence);
-      console.log(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-
       setPostLists(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getPosts();
