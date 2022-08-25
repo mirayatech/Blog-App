@@ -6,6 +6,8 @@
 }
 
 .createpost__container {
+  border: 1px solid rgb(229, 229, 229);
+
   background-color: #fff;
   padding: 30px;
   width: 400px;

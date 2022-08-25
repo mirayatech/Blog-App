@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { IoMdTrash } from "react-icons/io";
-
 import { getDocs, collection, doc, deleteDoc } from "firebase/firestore";
 import { auth, db } from "../firebase-config";
+import "../styles/home.css";
 
 type HomeProps = {
   isAuth: boolean;
@@ -37,10 +37,8 @@ export function Home({ isAuth }: HomeProps) {
       {postLists.map((post) => {
         return (
           <div key={post.id} className="post">
-            <h1>{post.title}</h1>
-            <p>{post.postText}</p>
-            <span>Author: {post.author.name}</span>
-            <div>
+            <div className="header">
+              <h1>{post.title}</h1>{" "}
               {isAuth && post.author.id === auth.currentUser.uid && (
                 <button
                   className="delete__post"
@@ -52,6 +50,11 @@ export function Home({ isAuth }: HomeProps) {
                 </button>
               )}
             </div>
+            <div className="line"></div>
+            <div className="post__text">
+              <p>{post.postText}</p>
+            </div>
+            <span className="post__author">Author: {post.author.name}</span>
           </div>
         );
       })}

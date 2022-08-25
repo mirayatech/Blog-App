@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db, auth } from "../firebase-config";
-import "../styles/createpost.css";
 import { useNavigate } from "react-router-dom";
+
+import "../styles/createpost.css";
 
 type CreatePostProps = {
   isAuth: boolean;
