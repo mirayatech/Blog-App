@@ -8,6 +8,7 @@ nav {
 
 nav a,
 .logout__button {
+  cursor: pointer;
   color: #fff;
   margin: 0 30px;
   font-weight: bold;
