@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { getDocs, collection, doc } from "firebase/firestore";
+import { IoMdTrash } from "react-icons/io";
+
+import { getDocs, collection, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 
 export function Home() {
@@ -23,6 +25,11 @@ export function Home() {
     getPosts();
   }, []);
 
+  const deletePost = async (id: any) => {
+    const postDoc = doc(db, "Post", id);
+    await deleteDoc(postDoc);
+  };
+
   return (
     <div className="home__page">
       {postLists.map((post) => {
@@ -30,7 +37,17 @@ export function Home() {
           <div key={post.id} className="post">
             <h1>{post.title}</h1>
             <p>{post.postText}</p>
-            <span>{post.author.name}</span>
+            <span>Author: {post.author.name}</span>
+            <div>
+              <button
+                className="delete__post"
+                onClick={() => {
+                  deletePost(post.id);
+                }}
+              >
+                <IoMdTrash />
+              </button>
+            </div>
           </div>
         );
       })}
