@@ -4,7 +4,11 @@ import { db, auth } from "../firebase-config";
 import "../styles/createpost.css";
 import { useNavigate } from "react-router-dom";
 
-export function CreatePost({ isAuth }) {
+type CreatePostProps = {
+  isAuth: boolean;
+};
+
+export function CreatePost({ isAuth }: CreatePostProps) {
   const [title, setTitle] = useState("");
   const [postText, setPostText] = useState("");
 
