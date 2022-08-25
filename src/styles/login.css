@@ -26,6 +26,14 @@
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
+.login-page h1 {
+  width: 500px;
+  text-align: center;
+  line-height: 1.5;
+  padding-bottom: 50px;
+  font-size: calc(28 / 16 * 1rem);
+}
+
 .login-page .login__button {
   padding: 10px;
   display: flex;

@@ -22,7 +22,7 @@ export function Login({ setIsAuth }: LoginProps) {
 
   return (
     <div className="login-page">
-      <p>Sign in with Google to continue </p>
+      <h1>In order to create a post, you must sign in with Google.</h1>
       <button className="login__button" onClick={signInWithGoogle}>
         <FcGoogle className="login__button--icon" />
         Sign in with Google
