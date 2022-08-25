@@ -1,5 +1,6 @@
 @import url("./styles/navbar.css");
 @import url("./styles/login.css");
+@import url("./styles/createpost.css");
 
 * {
   margin: 0;
@@ -9,5 +10,6 @@
 }
 
 body {
+  color: #292929;
   background-color: #eff1f2;
 }
