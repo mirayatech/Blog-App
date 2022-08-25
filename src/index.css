@@ -1,7 +1,13 @@
 @import url("./styles/navbar.css");
+@import url("./styles/login.css");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "poppins", sans-serif;
+}
+
+body {
+  background-color: #eff1f2;
 }

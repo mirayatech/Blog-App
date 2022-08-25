@@ -2,6 +2,7 @@ import { FcGoogle } from "react-icons/fc";
 import { auth, provider } from "../firebase-config";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import "../styles/navbar.css";
 
 type LoginProps = {
   setIsAuth: any;
@@ -23,7 +24,7 @@ export function Login({ setIsAuth }: LoginProps) {
     <div className="login-page">
       <p>Sign in with Google to continue </p>
       <button className="login__button" onClick={signInWithGoogle}>
-        <FcGoogle />
+        <FcGoogle className="login__button--icon" />
         Sign in with Google
       </button>
     </div>
