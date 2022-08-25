@@ -3,21 +3,22 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #292929;
+  background-color: var(--black);
 }
 
 nav a,
 .logout__button {
-  cursor: pointer;
-  color: #fff;
   margin: 0 30px;
+  cursor: pointer;
+  font-size: 1rem;
   font-weight: bold;
+  font-weight: bold;
+  color: var(--white);
   text-decoration: none;
   transition: all 0.3s ease;
-  font-size: 1rem;
 }
 
 .logout__button {
-  background-color: transparent;
   border: none;
+  background-color: transparent;
 }

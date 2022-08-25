@@ -4,7 +4,6 @@
   display: flex;
   padding-top: 20px;
   position: relative;
-
   align-items: center;
   flex-direction: column;
 }
@@ -17,8 +16,8 @@
   max-height: 400px;
   border-radius: 5px;
   position: relative;
-  background-color: #fff;
-  border: 1px solid rgb(229, 229, 229);
+  background-color: var(--white);
+  border: 1px solid var(--light-grey);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
 }
 
@@ -31,24 +30,24 @@
 .post .line {
   height: 1px;
   width: 100%;
-  background-color: rgb(229, 229, 229);
   margin: 8px 0 12px 0;
+  background-color: var(--light-grey);
 }
 
 .post .post__text {
   width: 100%;
   height: auto;
+  font-size: 1rem;
   max-height: 300px;
   overflow-y: scroll;
+  color: var(--grey);
   padding-bottom: 20px;
 }
 
 .post .post__author {
-  color: #757575;
-
-  font-style: italic;
   font-weight: bold;
   font-size: 0.9rem;
+  font-style: italic;
 }
 
 .post .header {
@@ -58,11 +57,11 @@
 }
 
 .post .delete__post {
-  cursor: pointer;
-  background-color: transparent;
   border: none;
-  font-size: calc(26 / 16 * 1rem);
+  cursor: pointer;
   transition: all 0.3s ease;
+  background-color: transparent;
+  font-size: calc(26 / 16 * 1rem);
 }
 
 .post .delete__post:hover {

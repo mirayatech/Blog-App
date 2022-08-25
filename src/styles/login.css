@@ -1,24 +1,25 @@
 .login-page {
   height: 80vh;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 .login-page .login__button {
-  cursor: pointer;
   border: none;
-  border: 1px solid rgb(229, 229, 229);
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
   padding: 10px;
   display: flex;
-  color: #757575;
+  cursor: pointer;
   font-weight: bold;
+  border-radius: 5px;
+  color: var(--grey);
   align-items: center;
-  background-color: #fff;
   transition: all 0.3s ease;
+  background-color: var(--white);
+  font-size: calc(20 / 16 * 1rem);
+  border: 1px solid var(--light-grey);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
 }
 
 .login-page .login__button:hover {
@@ -28,23 +29,13 @@
 
 .login-page h1 {
   width: 500px;
-  text-align: center;
   line-height: 1.5;
+  text-align: center;
   padding-bottom: 50px;
   font-size: calc(28 / 16 * 1rem);
 }
 
-.login-page .login__button {
-  padding: 10px;
-  display: flex;
-  color: #757575;
-  font-weight: bold;
-  font-size: calc(20 / 16 * 1rem);
-  align-items: center;
-  background-color: #fff;
-}
-
 .login-page .login__button .login__button--icon {
-  font-size: calc(30 / 16 * 1rem);
   margin-right: 10px;
+  font-size: calc(30 / 16 * 1rem);
 }

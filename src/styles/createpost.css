@@ -6,9 +6,9 @@
 }
 
 .createpost__container {
-  border: 1px solid rgb(229, 229, 229);
+  border: 1px solid var(--light-grey);
 
-  background-color: #fff;
+  background-color: var(--white);
   padding: 30px;
   width: 400px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
@@ -23,7 +23,7 @@
 .createpost__container .line {
   height: 1px;
   width: 100%;
-  background-color: rgb(229, 229, 229);
+  background-color: var(--light-grey);
   margin: 12px 0 20px 0;
 }
 
@@ -54,8 +54,8 @@
   border-radius: 3px;
   border: none;
   font-weight: bold;
-  color: #fff;
-  background-color: #292929;
+  color: var(--white);
+  background-color: var(--black);
   font-size: 1rem;
   width: 100%;
   transition: all 0.3s ease;
