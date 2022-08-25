@@ -26,7 +26,9 @@ export function Navbar({ isAuth, setIsAuth }: NavbarProps) {
       {!isAuth ? (
         <NavLink to="/login">Login</NavLink>
       ) : (
-        <button onClick={signUserOut}>Log Out</button>
+        <button className="logout__button" onClick={signUserOut}>
+          Log Out
+        </button>
       )}
     </nav>
   );

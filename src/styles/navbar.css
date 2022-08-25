@@ -6,10 +6,17 @@ nav {
   background-color: #292929;
 }
 
-nav a {
+nav a,
+.logout__button {
   color: #fff;
   margin: 0 30px;
   font-weight: bold;
   text-decoration: none;
   transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.logout__button {
+  background-color: transparent;
+  border: none;
 }
