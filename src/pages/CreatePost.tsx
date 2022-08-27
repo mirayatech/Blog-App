@@ -10,7 +10,7 @@ export function CreatePost() {
   const [title, setTitle] = useState("");
   const [postText, setPostText] = useState("");
 
-  const postCollectionRefrence = collection(firebaseDb, "Post");
+  const postCollectionRefrence = collection(firebaseDb, "posts");
 
   let navigate = useNavigate();
 
