@@ -1,37 +1,30 @@
-import { useNavigate } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import { auth } from "../firebase-config";
+import { NavLink, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import "../styles/navbar.css";
+import { firebaseAuth } from "../lib/firebase";
 
-type NavbarProps = {
-  isAuth: boolean;
-  setIsAuth: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-export function Navbar({ isAuth, setIsAuth }: NavbarProps) {
-  let navigate = useNavigate();
+export function Navbar() {
+  const navigate = useNavigate();
 
   const signUserOut = () => {
-    signOut(auth).then(() => {
-      localStorage.clear();
-      setIsAuth(false);
-      navigate("/login");
+    signOut(firebaseAuth).then(() => {
+      navigate("./");
     });
   };
+
   return (
     <nav>
       <NavLink to="/">Home</NavLink>
 
-      {!isAuth ? (
-        <NavLink to="/login">Login</NavLink>
-      ) : (
+      {firebaseAuth.currentUser ? (
         <>
           <NavLink to="/createpost">Create Post</NavLink>
           <button className="logout__button" onClick={signUserOut}>
             Log Out
           </button>
         </>
+      ) : (
+        <NavLink to="/login">Login</NavLink>
       )}
     </nav>
   );
