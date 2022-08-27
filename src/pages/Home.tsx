@@ -1,49 +1,54 @@
 import { useState, useEffect } from "react";
 import { IoMdTrash } from "react-icons/io";
-import { getDocs, collection, doc, deleteDoc } from "firebase/firestore";
-import { auth, db } from "../firebase-config";
+import {
+  getDocs,
+  collection,
+  doc,
+  deleteDoc,
+  CollectionReference,
+} from "firebase/firestore";
 import "../styles/home.css";
+import { firebaseAuth, firebaseDb } from "../lib/firebase";
 
-type HomeProps = {
-  isAuth: boolean;
+type Post = {
+  author: { id: string; name: string };
+  id: string;
+  postText: string;
+  title: string;
 };
 
-export function Home({ isAuth }: HomeProps) {
-  const [postLists, setPostLists] = useState<
-    {
-      author: { id: string; name: string };
-      id: string;
-      postText: string;
-      title: string;
-    }[]
-  >([]);
-  const postCollectionRefrence = collection(db, "Post");
+export function Home() {
+  const [postLists, setPostLists] = useState<Post[]>([]);
+  const postsCollectionRef = collection(
+    firebaseDb,
+    "posts"
+  ) as CollectionReference<Post>;
 
   useEffect(() => {
     const getPosts = async () => {
-      const data = await getDocs(postCollectionRefrence);
+      const data = await getDocs<Post>(postsCollectionRef);
       setPostLists(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getPosts();
   }, []);
 
   const deletePost = async (id: any) => {
-    const postDoc = doc(db, "Post", id);
+    const postDoc = doc(firebaseDb, `posts/${id}`);
     await deleteDoc(postDoc);
   };
 
   return (
     <div className="home__page">
-      {postLists.map((post) => {
+      {postLists.map(({ id, title, postText, author }) => {
         return (
-          <div key={post.id} className="post">
+          <div key={id} className="post">
             <div className="header">
-              <h1>{post.title}</h1>{" "}
-              {isAuth && post.author.id === auth.currentUser.uid && (
+              <h1>{title}</h1>{" "}
+              {author.id === firebaseAuth.currentUser?.uid && (
                 <button
                   className="delete__post"
                   onClick={() => {
-                    deletePost(post.id);
+                    deletePost(id);
                   }}
                 >
                   <IoMdTrash />
@@ -52,9 +57,9 @@ export function Home({ isAuth }: HomeProps) {
             </div>
             <div className="line"></div>
             <div className="post__text">
-              <p>{post.postText}</p>
+              <p>{postText}</p>
             </div>
-            <span className="post__author">Author: {post.author.name}</span>
+            <span className="post__author">Author: {author.name}</span>
           </div>
         );
       })}
