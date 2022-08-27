@@ -3,17 +3,18 @@ import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { CreatePost } from "./pages/CreatePost";
 import { Navbar } from "./component/Navbar";
-import { useState } from "react";
+import { firebaseAuth } from "./lib/firebase";
 
 export function App() {
-  const [isAuth, setIsAuth] = useState<boolean>(false);
+  console.log(firebaseAuth);
+
   return (
     <Router>
-      <Navbar isAuth={isAuth} setIsAuth={setIsAuth} />
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Home isAuth={isAuth} />} />
-        <Route path="/createpost" element={<CreatePost isAuth={isAuth} />} />
-        <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/createpost" element={<CreatePost />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );
