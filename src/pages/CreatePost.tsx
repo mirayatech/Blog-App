@@ -1,33 +1,30 @@
-import { useEffect, useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
-import { db, auth } from "../firebase-config";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { addDoc, collection } from "firebase/firestore";
+import { firebaseAuth, firebaseDb } from "../lib/firebase";
 
 import "../styles/createpost.css";
 
-type CreatePostProps = {
-  isAuth: boolean;
-};
-
-export function CreatePost({ isAuth }: CreatePostProps) {
+export function CreatePost() {
   const [title, setTitle] = useState("");
   const [postText, setPostText] = useState("");
 
-  const postCollectionRefrence = collection(db, "Post");
+  const postCollectionRefrence = collection(firebaseDb, "Post");
+
   let navigate = useNavigate();
 
   const createPost = async () => {
     await addDoc(postCollectionRefrence, {
       title: title,
       postText: postText,
-      author: { name: auth.currentUser?.displayName, id: auth.currentUser.uid },
+      author: {
+        name: firebaseAuth.currentUser?.displayName,
+        id: firebaseAuth.currentUser?.uid,
+      },
     });
     navigate("/");
   };
-
-  useEffect(() => {
-    if (!isAuth) navigate("/");
-  }, []);
 
   return (
     <div className="createpost">
