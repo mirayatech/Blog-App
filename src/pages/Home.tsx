@@ -25,17 +25,17 @@ export function Home() {
   ) as CollectionReference<Post>;
 
   useEffect(() => {
-    const getPosts = async () => {
-      await onSnapshot(postsCollectionRef, (snapshot) =>
+    const getPosts = () => {
+      onSnapshot(postsCollectionRef, (snapshot) =>
         setPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
       );
     };
     getPosts();
   }, []);
 
-  const deletePost = async (id: any) => {
+  const deletePost = (id: any) => {
     const postDoc = doc(firebaseDb, `posts/${id}`);
-    await deleteDoc(postDoc);
+    deleteDoc(postDoc);
   };
   return (
     <div className="home__page">
