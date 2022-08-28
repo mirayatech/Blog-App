@@ -35,7 +35,7 @@ export function Home() {
           <div key={id} className="post">
             <header className="header">
               <h1>{title}</h1>
-              <IoMdTrash />
+              {author.id === firebaseAuth.currentUser?.uid && <IoMdTrash />}
             </header>
             <div className="line"></div>
             <div className="post__text">
