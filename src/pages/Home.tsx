@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
-import { IoMdTrash } from "react-icons/io";
+import { IoMdTrash, IoIosHeart } from "react-icons/io";
 import {
   collection,
   CollectionReference,
   onSnapshot,
   deleteDoc,
   doc,
+  updateDoc,
 } from "firebase/firestore";
 import "../styles/home.css";
 import { firebaseAuth, firebaseDb } from "../lib/firebase";
 
 type Post = {
+  heart: number;
   author: { id: string; name: string };
   id: string;
   postText: string;
@@ -37,9 +39,16 @@ export function Home() {
     const postDoc = doc(firebaseDb, `posts/${id}`);
     deleteDoc(postDoc);
   };
+
+  const likePost = (id: string, heart: number) => {
+    const postDoc = doc(firebaseDb, `posts/${id}`);
+    const giveLikes = { heart: heart + 1 };
+    updateDoc(postDoc, giveLikes);
+  };
+
   return (
     <div className="home__page">
-      {posts.map(({ title, id, postText, author }) => {
+      {posts.map(({ title, id, postText, author, heart }) => {
         return (
           <div key={id} className="post">
             <header className="header">
@@ -59,6 +68,27 @@ export function Home() {
               <p>{postText}</p>
             </div>
             <span className="post__author">Author: {author.name}</span>
+            <div>
+              {author.id === firebaseAuth.currentUser?.uid ? (
+                ""
+              ) : (
+                <button
+                  onClick={() => {
+                    likePost(id, heart);
+                  }}
+                >
+                  <IoIosHeart />
+                </button>
+              )}
+              <p>
+                {author.id === firebaseAuth.currentUser?.uid ? (
+                  <IoIosHeart />
+                ) : (
+                  ""
+                )}
+                {heart}
+              </p>
+            </div>
           </div>
         );
       })}

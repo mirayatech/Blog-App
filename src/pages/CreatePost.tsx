@@ -18,6 +18,7 @@ export function CreatePost() {
     await addDoc(postCollectionRefrence, {
       title: title,
       postText: postText,
+      heart: 0,
       author: {
         name: firebaseAuth.currentUser?.displayName,
         id: firebaseAuth.currentUser?.uid,
