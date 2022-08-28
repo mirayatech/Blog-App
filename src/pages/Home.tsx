@@ -4,6 +4,8 @@ import {
   collection,
   CollectionReference,
   onSnapshot,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 import "../styles/home.css";
 import { firebaseAuth, firebaseDb } from "../lib/firebase";
@@ -23,11 +25,18 @@ export function Home() {
   ) as CollectionReference<Post>;
 
   useEffect(() => {
-    onSnapshot(postsCollectionRef, (snapshot) =>
-      setPosts(snapshot.docs.map((doc) => doc.data()))
-    );
+    const getPosts = async () => {
+      await onSnapshot(postsCollectionRef, (snapshot) =>
+        setPosts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      );
+    };
+    getPosts();
   }, []);
 
+  const deletePost = async (id: any) => {
+    const postDoc = doc(firebaseDb, `posts/${id}`);
+    await deleteDoc(postDoc);
+  };
   return (
     <div className="home__page">
       {posts.map(({ title, id, postText, author }) => {
@@ -35,13 +44,21 @@ export function Home() {
           <div key={id} className="post">
             <header className="header">
               <h1>{title}</h1>
-              {author.id === firebaseAuth.currentUser?.uid && <IoMdTrash />}
+              {author.id === firebaseAuth.currentUser?.uid && (
+                <button
+                  onClick={() => {
+                    deletePost(id);
+                  }}
+                >
+                  <IoMdTrash />
+                </button>
+              )}
             </header>
             <div className="line"></div>
             <div className="post__text">
               <p>{postText}</p>
             </div>
-            <span>{author.name}</span>
+            <span className="post__author">Author: {author.name}</span>
           </div>
         );
       })}
