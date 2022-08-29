@@ -1,5 +1,5 @@
-### 💬  &nbsp; Blog-App 
-A blog app built with react, typescript and firebase 
+### 💡 - About this project
+This is a blog application built with react, typescript and firebase. You can see everyone else's posts and like their posts. You must sign up with Google to create a blog post. Those logged in can delete their blog posts, but not those of others. You cannot like your own post. As long as you are logged in, you can only see which posts are in the feed and like others posts
 
 
 ### 🧠 - What I learned 
@@ -19,7 +19,10 @@ A blog app built with react, typescript and firebase
 
 <br/>
 
-## Preview
-### 📎 Live: https://blogapp-2022.vercel.app/
+### 🎥 - Preview
 
+
+
+
+https://user-images.githubusercontent.com/71933266/187163657-30170d97-32ac-46ed-ab1e-3cb88ad0c559.MP4
 
