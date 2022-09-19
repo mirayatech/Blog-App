@@ -1,4 +1,5 @@
 ### 💡 - About this project
+**Note: this was my first project I built with firebase**
 This is a blog application built with react, typescript and firebase. You can see everyone else's posts and like their posts. You must sign up with Google to create a blog post. Those logged in can delete their blog posts, but not those of others. You cannot like your own post. As long as you are logged in, you can only see which posts are in the feed and like others posts
 
 
